@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./dist/output.css">
+    <title>Modules Info Extractor</title>
+</head>
+
+<body class="w-72 h-[20rem] p-0 m-0">
+
+    <div class="w-4/5 h-full m-auto flex items-center justify-center">
+        <form class="w-full">
+            <input id="mde-module-search-input"
+                class="w-full h-10 pr-4 pl-4 outline-none border-2 border-purple-800 border-b-4 rounded-md text-sm"
+                type="search" placeholder="Search Packages..." autofocus autocomplete="off">
+            <br>
+            <select id="mde-language-dropdown"
+                class="w-full h-10 pr-4 pl-4 mt-4 outline-none border-2 border-purple-800 border-b-4 rounded-md text-sm hover:cursor-pointer"
+                name="Language Selection">
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="rust">Rust</option>
+            </select>
+            <br>
+            <button id="mde-module-search-button"
+                class=" w-16 h-10 mt-4 border-2 border-purple-800 border-b-4 rounded-md text-purple-800 font-bold 
+                hover:transition-all hover:duration-500 hover:bg-purple-800 hover:text-white hover:border-0">Search</button>
+        </form>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/fetching.js"></script>
+    <script type="module" src="./src/deserialize.js"></script>
+    <script type="module" src="./src/template.js"></script>
+    <script type="module" src="./src/utils.js"></script>
+</body>
+
+</html>
+
+<!-- npm run dev -->
+<!-- npx tailwindcss -i ./src/style.css -o ./dist/output.css --watch -->
