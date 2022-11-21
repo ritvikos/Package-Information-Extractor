@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", (): void => {
 
-    // Get Data from Local Storage and Render the Data on the Template.html
-    chrome.storage.sync.get(['stored_response'], (result) => {
-        document.getElementById("module-title")!.innerHTML = result.stored_response.title;
-        document.getElementById("module-description")!.innerHTML = result.stored_response.description;
+    // Get Data from Local Storage and Render it on the Template.html
+    chrome.storage.sync.get(['stored_response'], (result: { [key: string]: any }) => {
+        document.getElementById("package-title")!.innerHTML = result.stored_response.title;
+        document.getElementById("package-description")!.innerHTML = result.stored_response.description;
     })
 });
 
-export {}
+export { }

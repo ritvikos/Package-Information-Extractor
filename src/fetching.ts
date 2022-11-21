@@ -1,4 +1,4 @@
-import deserialize from "./deserialize.js";
+import deserialize from './deserialize.js';
 
 interface ISource {
     source_type: string;
@@ -18,14 +18,9 @@ class Source implements ISource {
     // Fetch Module's Data from End-points based on the Language
     async fetch_data(): Promise<void> {
 
-        console.log(this.module_input);
-        console.log(this.source_type);
-
-        if (this.source_type === "js") this.url = `https://registry.npmjs.org/${this.module_input}`;
-
-        if (this.source_type === "py") this.url = `https:/pypi.org/pypi/${this.module_input}/json`
-
-        if (this.source_type === "rs") this.url = `https://crates.io/api/v1/crates/${this.module_input}`
+        if (this.source_type === "javascript") this.url = `https://registry.npmjs.org/${this.module_input}`;
+        if (this.source_type === "python") this.url = `https:/pypi.org/pypi/${this.module_input}/json`
+        if (this.source_type === "rust") this.url = `https://crates.io/api/v1/crates/${this.module_input}`
 
         await fetch(this.url)
             .then((response: Response) => response.json())

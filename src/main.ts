@@ -1,42 +1,28 @@
-import Source from "./fetching.js";
+import Source from './fetching.js';
 
-const dropDown = document.getElementById("mde-language-dropdown") as HTMLSelectElement
-const searchButton = document.getElementById("mde-module-search-button") as HTMLButtonElement;
-const input = document.getElementById("mde-module-search-input") as HTMLInputElement;
+const dropDown = document.getElementById("language-dropdown") as HTMLSelectElement
+const searchButton = document.getElementById("package-search-button") as HTMLButtonElement;
+const input = document.getElementById("package-search-input") as HTMLInputElement;
 
-try {
-    searchButton.addEventListener("click", (e) => {
 
-        e.preventDefault();
-        const sanitized_input: string = dropDown.value;
+searchButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const dropDown_value: string = dropDown.value;
 
-        // Clear Storage Before Sending Request
-        try {
-            chrome.storage.sync.clear();
-            chrome.storage.sync.remove("stored_response");
-        } catch (error) {
-            console.error("Couldn't clear storage");
-        }
+    // Clear Storage Before Sending Request
+    try {
+        chrome.storage.sync.clear();
+        chrome.storage.sync.remove("stored_response");
+    } catch (error) {
+        console.error("Couldn't clear storage");
+    }
 
-        // Fetch Data Based on The Language
-        switch (sanitized_input) {
-            case "javascript":
-                new Source(input.value, "js").fetch_data(); break;
+    // Fetch Data Based on The Language
+    if (dropDown_value === "javascript" || dropDown_value === "python" || dropDown_value === "rust") {
+        new Source(input.value, dropDown_value).fetch_data();
+    }
+})
 
-            case "python":
-                new Source(input.value, "py").fetch_data(); break;
-
-            case "rust":
-                new Source(input.value, "rs").fetch_data(); break;
-
-            default:
-                break;
-        }
-
-    })
-} catch (error) {
-    console.error("Couldn't fetch data");
-}
 
 export { };
 
